@@ -1,6 +1,5 @@
 import * as Bundler from 'parcel-bundler';
 import * as express from 'express';
-import * as basicAuth from 'express-basic-auth';
 import * as http from 'http';
 import * as https from 'https';
 import * as fs from 'fs';
@@ -11,8 +10,6 @@ import {
     tetraKitRawPath,
     webAudioPathPrefix,
     isDev,
-    username,
-    password,
     isSecure,
     privateCaPath,
     privateKeyPath,
@@ -27,14 +24,6 @@ export default (serverReadyCallback: (app: express.Express, io: SocketIOServer) 
     const bundler = new Bundler('./client/index.html', {
         hmr: isDev
     });
-
-    const users: KeyValue = {};
-    users[username] = password;
-
-    app.use(basicAuth({
-        users,
-        challenge: true,
-    }));
 
     app.use(webAudioPathPrefix, express.static(tetraKitRawPath));
     app.use(bundler.middleware());

@@ -6,8 +6,6 @@ export const rawExtension = '.raw';
 export const processedExtension = '.done';
 export const undecodedExtention = '.out';
 
-export const username = process.env.USERNAME || 'admin';
-export const password = process.env.PASSWORD || 'adm1n';
 export const isSecure = process.env.SECURE === 'true' ? true : false;
 export const isPublic = process.env.PUBLIC === 'true' ? true : false;
 export const serverPort = process.env.PORT;
